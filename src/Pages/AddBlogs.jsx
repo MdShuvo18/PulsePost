@@ -1,9 +1,13 @@
 
+import Swal from "sweetalert2";
 import Footer from "./Footer";
 import Navbar from "./Home/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../Component/AuthProvider";
 
 
 const AddBlogs = () => {
+    const { user } = useContext(AuthContext)
     const handleAddBlog = (e) => {
         e.preventDefault();
         console.log('ok')
@@ -13,8 +17,29 @@ const AddBlogs = () => {
         const short_description = form.short_description.value
         const long_description = form.long_description.value
         const category = form.category.value
-        const data = { title, image, short_description, long_description, category }
-        console.log(data)
+        const email = form.email.value
+        const blogData = { title, email, image, short_description, long_description, category }
+        console.log(blogData)
+
+        fetch('http://localhost:5000/addBlogCollection', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(blogData),
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Item Added successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            });
 
     }
     return (
@@ -23,7 +48,7 @@ const AddBlogs = () => {
             <div>
                 <h2 className="text-4xl font-bold text-center">Add Blogs</h2>
 
-                <form  onSubmit={handleAddBlog} className="space-y-6 text-center mt-6">
+                <form onSubmit={handleAddBlog} className="space-y-6 text-center mt-6">
                     <div className="grid md:grid-cols-2 lg:grid-cols-2">
                         <div>
                             <label className="form-control w-full max-w-xs">
@@ -66,18 +91,32 @@ const AddBlogs = () => {
 
                     {/* 3rd */}
 
-                    <div>
-                        <label className="form-control w-full max-w-xs">
-                            <div className="label">
-                                <span className="label-text">Category</span>
-                            </div>
-                            {/* <input type="text" placeholder="" className="input input-bordered w-full max-w-xs" /> */}
-                            <select name="category" required>
-                                <option value="">Select a Category</option>
-                                <option value="Travel">Travel</option>
+                    <div className="grid  md:grid-cols-2 lg:grid-cols-2">
+                        <div>
+                            <label className="form-control w-full max-w-xs">
+                                <div className="label">
+                                    <span className="label-text">Category</span>
+                                </div>
+                                <select name="category" required>
+                                    <option value="">Select a Category</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="Food & Cooking">Food & Cooking</option>
+                                    <option value="Business & Entrepreneurship">Business & Entrepreneurship</option>
+                                    <option value="Health & Wellness">Health & Wellness</option>
+                                    <option value="Home & Garden">Home & Garden</option>
+                                    <option value="Photography">Photography</option>
 
-                            </select>
-                        </label>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <label className="form-control w-full max-w-xs">
+                                <div className="label">
+                                    <span className="label-text">Users email</span>
+                                </div>
+                                <input type="email" defaultValue={user.email} placeholder="User Email" name="email" className="input input-bordered w-full max-w-xs" />
+                            </label>
+                        </div>
                     </div>
 
                     <button className="btn btn-success btn-outline text-white w-3/4 md:w-2/3 lg:w-2/5 ml-14 md:ml-6 lg:ml-10">Submit</button>
