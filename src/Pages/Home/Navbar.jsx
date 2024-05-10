@@ -1,16 +1,44 @@
-import { NavLink } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Component/AuthProvider";
+// import { ToastContainer, toast } from "react-toastify";
+import toast, { Toaster } from 'react-hot-toast';
+import { CgProfile } from "react-icons/cg";
 
 
 const Navbar = () => {
+    const { user,logOut } = useContext(AuthContext)
+    const [hoverName, setHoverName] = useState("")
+
+    useEffect(() => {
+        if (user) {
+            setHoverName(user.displayName)
+        } else {
+            setHoverName("")
+        }
+    }, [user])
+
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink>Add Blog</NavLink></li>
-        <li><NavLink>All blogs</NavLink></li>
+        {
+            user && <>
+                <li><NavLink to='/allblogs'>All blogs</NavLink></li>
+            </>
+        }
         <li><NavLink>Featured Blogs</NavLink></li>
         <li><NavLink>Wishlist</NavLink></li>
-       
+
     </>
+
+const handleSignOut = () => {
+    logOut()
+        .then(() => {
+            toast.success("Sign out successfully")
+        })
+        .catch()
+}
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -32,9 +60,38 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                {
+                    user ? (
+                        <div className="lg:tooltip" data-tip={hoverName}>
+                            {
+                                user.photoURL ? (
+
+                                    <img src={user.photoURL} className="w-10 h-10 rounded-full" alt={user.displayName} />
+
+                                ) : (
+                                    <CgProfile></CgProfile>
+                                )
+                            }
+
+                        </div>
+
+                    ) : (
+                        <CgProfile></CgProfile>
+                    )}
+                {
+                    user
+                        ? <button onClick={handleSignOut} className="btn btn-success bg-green-700 btn-outline text-black border-none">Sign Out</button>
+                        : <div>
+                            <div className="flex flex-row gap-1">
+                                <Link to='/login'> <button className="btn btn-success bg-green-700 btn-outline text-white border-none">Login</button></Link>
+                                <Link to='/signup'> <button className="btn btn-outline btn-success bg-orange-200 text-white border-none">Register</button></Link>
+                            </div>
+                        </div>
+                }
+
                 </div>
             </div>
+            <Toaster position="top-right" autoClose="2000"></Toaster>
         </div>
     );
 };

@@ -1,3 +1,4 @@
+import Footer from "../Footer";
 import Navbar from "./Navbar";
 
 
@@ -6,6 +7,7 @@ const Home = () => {
         <div>
             <Navbar></Navbar>
             this is home
+            <Footer></Footer>
         </div>
     );
 };

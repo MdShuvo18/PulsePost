@@ -3,6 +3,8 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import AllBlogs from "../Pages/AllBlogs";
+import PrivateRoute from "../Component/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -14,13 +16,18 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
+                path:'/allblogs',
+                element:<PrivateRoute><AllBlogs></AllBlogs></PrivateRoute>
+            },
+            {
                 path: '/login',
                 element: <Login></Login>
             },
             {
                 path: '/signup',
                 element: <Register></Register>
-            }
+            },
+            
         ]
     },
 ]);
