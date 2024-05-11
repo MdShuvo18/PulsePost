@@ -31,7 +31,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/allblogs',
-                element: <PrivateRoute><AllBlogs></AllBlogs></PrivateRoute>
+                element: <PrivateRoute><AllBlogs></AllBlogs></PrivateRoute>,
+                loader: () => fetch('http://localhost:5000/addBlogCollection')
             },
             {
                 path: '/login',
