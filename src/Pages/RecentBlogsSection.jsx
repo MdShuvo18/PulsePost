@@ -1,11 +1,14 @@
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Link, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 
 const RecentBlogsSection = () => {
 
     const [blogs, setBlogs] = useState([])
-    const [expand, setExpand] = useState(false)
+    const navigate = useNavigate()
+    // const [expand, setExpand] = useState(false)
 
     useEffect(() => {
         fetch('http://localhost:5000/addBlogCollection')
@@ -16,6 +19,10 @@ const RecentBlogsSection = () => {
             })
         console.log(blogs)
     }, [])
+
+    const handlebutton = (id) => {
+        navigate(`/blogdetails/${id}`)
+    }
 
 
     // const handleExpand = () => {
@@ -47,14 +54,14 @@ const RecentBlogsSection = () => {
                                         } */}
                                     </Text>
                                     <Text color='blue.600' fontSize='2xl'>
-                                      Category :  {blog.category}
+                                        Category :  {blog.category}
                                     </Text>
                                 </Stack>
                             </CardBody>
                             <Divider />
                             <CardFooter>
                                 <ButtonGroup spacing='2'>
-                                    <Button variant='solid' colorScheme='blue'>
+                                    <Button onClick={() => handlebutton(blog._id)} variant='solid' colorScheme='blue'>
                                         Details
                                     </Button>
                                     <Button variant='ghost' colorScheme='blue'>
