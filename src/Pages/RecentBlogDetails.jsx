@@ -1,21 +1,38 @@
 import { useLoaderData } from "react-router-dom";
 import Navbar from "./Home/Navbar";
 import Footer from "./Footer";
-import { Textarea } from '@chakra-ui/react'
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../Component/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const RecentBlogDetails = () => {
     const { user } = useContext(AuthContext)
-    // console.log(user)
-    // const [comments, setComments] = useState([])
+
+    const userEmail = user?.email;
+    const userName = user?.displayName;
+    const profilePicture = user?.photoURL
     const blogsDetail = useLoaderData()
     console.log(blogsDetail)
 
-    const handleSubmit = () => {
-        // setComments([...comments, comments])
-        console.log('ok')
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const comment = form.comment.value;
+        if(userEmail === blogsDetail.email){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You can not comment on your own blog',
+            })
+            return;
+        }
+
+
+        axios.post('http://localhost:5000/comment',
+            { comment: comment, email: userEmail, blogsId: blogsDetail._id, userName: userName, profilePicture: profilePicture })
+            .then(res => console.log(res.data))
     }
     return (
         <div className="space-y-6">
@@ -33,12 +50,8 @@ const RecentBlogDetails = () => {
                 </div>
 
                 <form onSubmit={handleSubmit}>
-                    <Textarea placeholder='Comment here....' />
-                    <a  href="#_" className="relative inline-block px-4 py-2 font-medium group">
-                        <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-                        <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
-                        <span className="relative text-black group-hover:text-white">submit</span>
-                    </a>
+                    <textarea name="comment" placeholder="comment here..." className="textarea textarea-bordered textarea-md w-full max-w-xs" ></textarea>
+                    <div>  <input type="submit" className="btn" /></div>
                 </form>
 
             </div>

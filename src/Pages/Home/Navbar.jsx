@@ -26,10 +26,11 @@ const Navbar = () => {
             user && <>
                 <li><NavLink to='/addblogs'>Add Blog</NavLink></li>
                 <li><NavLink to='/allblogs'>All blogs</NavLink></li>
+                <li><NavLink to='/wishlist'>Wishlist</NavLink></li>
             </>
         }
         <li><NavLink>Featured Blogs</NavLink></li>
-        <li><NavLink>Wishlist</NavLink></li>
+       
 
     </>
 

@@ -8,6 +8,7 @@ import PrivateRoute from "../Component/PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage";
 import AddBlogs from "../Pages/AddBlogs";
 import RecentBlogDetails from "../Pages/RecentBlogDetails";
+import Wishlist from "../Component/WishList/Wishlist";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
                 path: '/allblogs',
                 element: <PrivateRoute><AllBlogs></AllBlogs></PrivateRoute>,
                 loader: () => fetch('http://localhost:5000/addBlogCollection')
+            },
+            {
+                path: '/wishlist/:id',
+                element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
             },
             {
                 path: '/login',

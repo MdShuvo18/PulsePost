@@ -4,16 +4,25 @@ import Navbar from "./Home/Navbar";
 import { Card } from 'antd';
 import { Button, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import axios from "axios";
+
 
 const { Meta } = Card;
 
 
 
 const AllBlogs = () => {
+
     const allBlogs = useLoaderData()
     console.log(allBlogs)
     const navigate = useNavigate()
     const [category, setCategoryFilter] = useState(null);
+    const [searchItem, setSearchItem] = useState('')
+    const [visible, setVisible] = useState(6)
+    const handleShowMore = () => {
+        setVisible(prev => prev + 6)
+    }
+
 
     const handlebutton = (id) => {
         navigate(`/blogdetails/${id}`)
@@ -23,10 +32,30 @@ const AllBlogs = () => {
         const toLowerCase = category.toLowerCase();
         setCategoryFilter(toLowerCase)
     }
+
+    const handleWishList = (email, id) => {
+
+        const wishList = { email: email, id: id }
+        console.log(wishList)
+        navigate(`/wishlist/${id}`)
+        axios.post('http://localhost:5000/addWishListCollection', wishList)
+            .then(res => console.log(res.data))
+
+
+    }
+
+
     return (
         <div className="space-y-6">
             <Navbar></Navbar>
             <h2 className="text-5xl font-bold text-center">All blogs</h2>
+
+            <input
+                placeholder="Search by title"
+                value={searchItem}
+                onChange={(e) => setSearchItem(e.target.value)}
+                style={{ maxWidth: 300, margin: '0 auto', marginBottom: 20 }} />
+            <button className="">search</button>
 
             <div className="grid justify-items-center">
                 <div className="dropdown dropdown-hover">
@@ -47,7 +76,7 @@ const AllBlogs = () => {
 
 
                 {
-                    allBlogs.filter(item => category === null || item.category.toLowerCase() === category).map(allBlog => <Card className="" key={allBlog._id}
+                    allBlogs.filter(item => category === null || item.category.toLowerCase() === category && item.title.toLowerCase().includes(searchItem.toLowerCase())).slice(0, visible).map(allBlog => <Card className="" key={allBlog._id}
                         hoverable
                         style={{ width: 240 }}
                         cover={<img alt="example" src={allBlog.image} />}
@@ -57,9 +86,24 @@ const AllBlogs = () => {
                         <Text><span className="text-orange-600 font-bold">Category:</span> {allBlog.category}</Text>
                         <div className="grid grid-cols-2 gap-2">
                             <Button onClick={() => handlebutton(allBlog._id)} className="btn btn-outline btn-primary">Details</Button>
-                            <Button className="btn btn-outline btn-success">Whishlist</Button>
+                            <Button onClick={() => handleWishList(allBlog.email, allBlog._id,)} className="btn btn-outline btn-success">Whishlist</Button>
                         </div>
                     </Card>)
+                }
+
+                {
+                    allBlogs.length > visible && (
+
+                        <a onClick={handleShowMore} href="#_" className=" relative inline-block text-lg group">
+                            <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+                                <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+                                <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
+                                <span className="relative">Show More</span>
+                            </span>
+                            <span className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
+                        </a>
+
+                    )
                 }
 
             </div>
