@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Component/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Comment from "../Component/Comment";
 
 
 const RecentBlogDetails = () => {
@@ -16,6 +17,8 @@ const RecentBlogDetails = () => {
     const blogsDetail = useLoaderData()
     console.log(blogsDetail)
 
+    
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -23,8 +26,8 @@ const RecentBlogDetails = () => {
         if(userEmail === blogsDetail.email){
             Swal.fire({
                 icon: 'error',
-                title: 'Oops...',
-                text: 'You can not comment on your own blog',
+                title: 'Sorry...',
+                text: 'Can not comment on own blog',
             })
             return;
         }
@@ -55,6 +58,7 @@ const RecentBlogDetails = () => {
                 </form>
 
             </div>
+            <Comment></Comment>
             <Footer></Footer>
         </div>
     );

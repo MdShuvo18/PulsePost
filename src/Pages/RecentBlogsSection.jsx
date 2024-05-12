@@ -49,13 +49,6 @@ const RecentBlogsSection = () => {
                                     <Heading size='md'>{blog.title}</Heading>
                                     <Text>
                                         {blog.short_description}
-                                        {/* {expand ? blog.short_description : `${blog.short_description.slice(0, 80)}...`}
-                                        {
-                                            blog.short_description.length > 80 &&
-                                            <Button variant='link' color='blue.400' onClick={handleExpand}>
-                                                {expand ? 'Read less' : 'Read more'}
-                                            </Button>
-                                        } */}
                                     </Text>
                                     <Text color='blue.600' fontSize='2xl'>
                                         Category :  {blog.category}

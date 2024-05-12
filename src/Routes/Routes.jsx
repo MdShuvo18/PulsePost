@@ -9,6 +9,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import AddBlogs from "../Pages/AddBlogs";
 import RecentBlogDetails from "../Pages/RecentBlogDetails";
 import Wishlist from "../Component/WishList/Wishlist";
+import Comment from "../Component/Comment";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/blogdetails/${params.id}`)
             },
             {
+                path: '/comment',
+                element: <Comment></Comment>,
+                // loader: () => fetch('http://localhost:5000/comment')
+            },
+            {
                 path: '/allblogs',
                 element: <PrivateRoute><AllBlogs></AllBlogs></PrivateRoute>,
                 loader: () => fetch('http://localhost:5000/addBlogCollection')
@@ -40,6 +46,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
             },
+
             {
                 path: '/login',
                 element: <Login></Login>
