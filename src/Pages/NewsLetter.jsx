@@ -14,7 +14,7 @@ const NewsLetter = () => {
             icon: 'success',
             title: 'Thank you for subscribing to our newsletter',
             showConfirmButton: false,
-            timer: 1500
+            timer: 2500
         })
         form.reset();
     }
