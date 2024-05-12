@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Navbar from "./Home/Navbar";
 import Footer from "./Footer";
 import { useContext } from "react";
@@ -17,13 +17,13 @@ const RecentBlogDetails = () => {
     const blogsDetail = useLoaderData()
     console.log(blogsDetail)
 
-    
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
         const comment = form.comment.value;
-        if(userEmail === blogsDetail.email){
+        if (userEmail === blogsDetail.email) {
             Swal.fire({
                 icon: 'error',
                 title: 'Sorry...',
@@ -49,8 +49,23 @@ const RecentBlogDetails = () => {
                         <p><span className="text-lg font-semibold text-amber-800">Short Description</span> : {blogsDetail.short_description}</p>
                         <p><span className="text-lg font-semibold text-amber-800">Long Description</span> : {blogsDetail.long_description}</p>
 
+                        <div className="text-center mt-3">
+                            <Link to={`/updateblog/${blogsDetail._id}`}>
+                                <a href="#_" className="relative px-5 py-2 font-medium text-white group">
+                                    <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-purple-500 group-hover:bg-purple-700 group-hover:skew-x-12"></span>
+                                    <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-purple-700 group-hover:bg-purple-500 group-hover:-skew-x-12"></span>
+                                    <span className="absolute bottom-0 left-0 hidden w-10 h-20 transition-all duration-100 ease-out transform -translate-x-8 translate-y-10 bg-purple-600 -rotate-12"></span>
+                                    <span className="absolute bottom-0 right-0 hidden w-10 h-20 transition-all duration-100 ease-out transform translate-x-10 translate-y-8 bg-purple-400 -rotate-12"></span>
+                                    <span className="relative">Update</span>
+                                </a>
+                            </Link>
+                        </div>
+
                     </div>
+
+
                 </div>
+
 
                 <form onSubmit={handleSubmit}>
                     <textarea name="comment" placeholder="comment here..." className="textarea textarea-bordered textarea-md w-full max-w-xs" ></textarea>

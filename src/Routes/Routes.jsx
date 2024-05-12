@@ -10,6 +10,7 @@ import AddBlogs from "../Pages/AddBlogs";
 import RecentBlogDetails from "../Pages/RecentBlogDetails";
 import Wishlist from "../Component/WishList/Wishlist";
 import Comment from "../Component/Comment";
+import UpdateBlog from "../Component/UpdateBlog";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,13 @@ const router = createBrowserRouter([
                 path: '/blogdetails/:id',
                 element: <PrivateRoute><RecentBlogDetails></RecentBlogDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/blogdetails/${params.id}`)
+            },
+            {
+                path: '/updateblog/:id',
+                element: <UpdateBlog></UpdateBlog>,
+                loader: ({ params }) => fetch(`http://localhost:5000/addBlogCollection/${params.id}`)
+
+
             },
             {
                 path: '/comment',
