@@ -37,52 +37,53 @@ const UpdateBlog = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
+                    form.reset();
                 }
             })
 
     }
     return (
 
-        <div>
+        <div className="space-y-6">
             <Navbar></Navbar>
             <div className="bg-[#F4F3F0] p-24">
                 <h2 className="text-3xl font-extrabold text-center">Update Blog</h2>
                 <form onSubmit={handleUpdateBlog}>
-                    {/* form name and quantity row */}
-                    <div className="md:flex mb-8">
+                    {/* form blog title and image row */}
+                    <div className="md:flex mb-8 gap-2">
                         <div className="form-control md:w-1/2">
                             <label className="label">
                                 <span className="label-text">Blog Title</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="title" defaultValue={title} placeholder="Blog title" className="input input-bordered w-full" />
+                                <input type="text" name="title" defaultValue={title}  className="input input-bordered w-full" />
                             </label>
                         </div>
-                        <div className="form-control md:w-1/2 ml-4">
+                        <div className="form-control md:w-1/2">
                             <label className="label">
                                 <span className="label-text">Image</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="image" defaultValue={image} placeholder="image URL" className="input input-bordered w-full" />
+                                <input type="text" name="image" defaultValue={image}  className="input input-bordered w-full" />
                             </label>
                         </div>
                     </div>
-                    {/* form supplier row */}
+                    {/* short and long description row */}
                     <div className="md:flex mb-8">
                         <div className="form-control md:w-1/2">
                             <label className="label">
                                 <span className="label-text">Short Description</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="short_description" defaultValue={short_description} placeholder="Short Description" className="input input-bordered w-full" />
+                                <input type="text" name="short_description" defaultValue={short_description}  className="input input-bordered w-full" />
                             </label>
                         </div>
-                        <div className="form-control md:w-1/2 ml-4">
+                        <div className="form-control md:w-1/2">
                             <label className="label">
                                 <span className="label-text">Long Description</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="long_description" defaultValue={long_description} placeholder="TaLong Description" className="input input-bordered w-full" />
+                                <input type="text" name="long_description" defaultValue={long_description} className="input input-bordered w-full" />
                             </label>
                         </div>
                     </div>
@@ -92,9 +93,15 @@ const UpdateBlog = () => {
                             <label className="label">
                                 <span className="label-text">Category</span>
                             </label>
-                            <label className="input-group">
-                                <input type="text" name="category" defaultValue={category} placeholder="Category" className="input input-bordered w-full" />
-                            </label>
+                            <select name="category">
+                                <option value={category}>{category}</option>
+                                <option value="Travel">Travel</option>
+                                <option value="Food & Cooking">Food & Cooking</option>
+                                <option value="Business & Entrepreneurship">Business & Entrepreneurship</option>
+                                <option value="Health & Wellness">Health & Wellness</option>
+                                <option value="Home & Garden">Home & Garden</option>
+                                <option value="Photography">Photography</option>
+                            </select>
                         </div>
 
                     </div>

@@ -1,4 +1,5 @@
 import Footer from "../Footer";
+import NewsLetter from "../NewsLetter";
 import RecentBlogsSection from "../RecentBlogsSection";
 import Banner from "./Banner";
 import Navbar from "./Navbar";
@@ -6,11 +7,11 @@ import Navbar from "./Navbar";
 
 const Home = () => {
     return (
-        <div>
+        <div className="space-y-8">
             <Navbar></Navbar>
             <Banner></Banner>
             <RecentBlogsSection></RecentBlogsSection>
-            this is home
+            <NewsLetter></NewsLetter>
             <Footer></Footer>
         </div>
     );

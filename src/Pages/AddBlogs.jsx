@@ -38,6 +38,7 @@ const AddBlogs = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
+                    form.reset()
                 }
             });
 
@@ -45,85 +46,87 @@ const AddBlogs = () => {
     return (
         <div className="space-y-6">
             <Navbar></Navbar>
-            <div>
-                <h2 className="text-4xl font-bold text-center">Add Blogs</h2>
+            <div className="bg-[#F4F3F0] p-24">
 
-                <form onSubmit={handleAddBlog} className="space-y-6 text-center mt-6">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-2">
-                        <div>
-                            <label className="form-control w-full max-w-xs">
-                                <div className="label">
-                                    <span className="label-text">BLog Title</span>
-                                </div>
-                                <input type="text" placeholder="Title Here" name="title" className="input input-bordered w-full max-w-xs" />
+                <h2 className="text-3xl font-extrabold text-center">Add a Blog</h2>
+                <form onSubmit={handleAddBlog}>
+                    {/* Blog title and image row */}
+                    <div className="md:flex mb-8 gap-2">
+                        <div className="form-control md:w-1/2">
+                            <label className="label">
+                                <span className="label-text">Blog Title</span>
+                            </label>
+                            <label className="input-group">
+                                <input type="text" name="title" placeholder="Blog Title" className="input input-bordered w-full" />
                             </label>
                         </div>
-                        <div>
-                            <label className="form-control w-full max-w-xs">
-                                <div className="label">
-                                    <span className="label-text">Image</span>
-                                </div>
-                                <input type="text" placeholder="img url" name="image" className="input input-bordered w-full max-w-xs" />
+                        <div className="form-control md:w-1/2">
+                            <label className="label">
+                                <span className="label-text">Image</span>
+                            </label>
+                            <label className="input-group">
+                                <input type="text" name="image" placeholder="Image URL" className="input input-bordered w-full" />
+                            </label>
+                        </div>
+
+                    </div>
+
+                    {/* short and long description row */}
+                    <div className="md:flex mb-8 gap-2">
+                        <div className="form-control md:w-1/2">
+                            <label className="label">
+                                <span className="label-text">Short Description</span>
+                            </label>
+                            <label className="input-group">
+                                <input type="text" name="short_description" placeholder="Short Description" className="input input-bordered w-full" />
+                            </label>
+                        </div>
+                        <div className="form-control md:w-1/2">
+                            <label className="label">
+                                <span className="label-text">Long Description</span>
+                            </label>
+                            <label className="input-group">
+                                <input type="text" name="long_description" placeholder="Long Description" className="input input-bordered w-full" />
                             </label>
                         </div>
                     </div>
 
-                    {/* 2nd */}
-                    <div className="grid  md:grid-cols-2 lg:grid-cols-2">
-                        <div>
-                            <label className="form-control w-full max-w-xs">
-                                <div className="label">
-                                    <span className="label-text">Short Description</span>
-                                </div>
-                                {/* <input type="text" placeholder="short description" name="short_description" className="input input-bordered w-full max-w-xs" /> */}
-                                <textarea placeholder="Short Description" className="textarea textarea-bordered textarea-xs w-full max-w-xs" name="short_description" ></textarea>
+                    {/* form category and user emailrow */}
+                    <div className="md:flex mb-8 gap-2">
+                        <div className="form-control md:w-1/2">
+                            <label className="label">
+                                <span className="label-text">Category</span>
+                            </label>
+
+                            <select name="category" className="h-12 rounded-md">
+                                <option value="Travel">Travel</option>
+                                <option value="Food & Cooking">Food & Cooking</option>
+                                <option value="Business & Entrepreneurship">Business & Entrepreneurship</option>
+                                <option value="Health & Wellness">Health & Wellness</option>
+                                <option value="Home & Garden">Home & Garden</option>
+                                <option value="Photography">Photography</option>
+                            </select>
+                            {/* <label className="input-group">
+                                <input type="text" name="category" placeholder="Category" className="input input-bordered w-full" />
+                            </label> */}
+                        </div>
+                        <div className="form-control md:w-1/2">
+                            <label className="label">
+                                <span className="label-text">User email</span>
+                            </label>
+                            <label className="input-group">
+                                <input type="text" name="email" defaultValue={user.email} className="input input-bordered w-full" />
                             </label>
                         </div>
-                        <div>
-                            <label className="form-control w-full max-w-xs">
-                                <div className="label">
-                                    <span className="label-text">Long Description</span>
-                                </div>
-                                <textarea placeholder="Long Description" className="textarea textarea-bordered textarea-xs w-full max-w-xs" name="long_description" ></textarea>
-                            </label>
-                        </div>
+
                     </div>
 
-                    {/* 3rd */}
 
-                    <div className="grid  md:grid-cols-2 lg:grid-cols-2">
-                        <div>
-                            <label className="form-control w-full max-w-xs">
-                                <div className="label">
-                                    <span className="label-text">Category</span>
-                                </div>
-                                <select name="category" required>
-                                    <option value="">Select a Category</option>
-                                    <option value="Travel">Travel</option>
-                                    <option value="Food & Cooking">Food & Cooking</option>
-                                    <option value="Business & Entrepreneurship">Business & Entrepreneurship</option>
-                                    <option value="Health & Wellness">Health & Wellness</option>
-                                    <option value="Home & Garden">Home & Garden</option>
-                                    <option value="Photography">Photography</option>
+                    <input type="submit" value="Add Blog" className="btn btn-block" />
 
-                                </select>
-                            </label>
-                        </div>
-                        <div>
-                            <label className="form-control w-full max-w-xs">
-                                <div className="label">
-                                    <span className="label-text">Users email</span>
-                                </div>
-                                <input type="email" defaultValue={user.email} placeholder="User Email" name="email" className="input input-bordered w-full max-w-xs" />
-                            </label>
-                        </div>
-                    </div>
-
-                    <button className="btn btn-success btn-outline text-white w-3/4 md:w-2/3 lg:w-2/5 ml-14 md:ml-6 lg:ml-10">Submit</button>
                 </form>
 
             </div>
-
             <Footer></Footer>
         </div>
     );
