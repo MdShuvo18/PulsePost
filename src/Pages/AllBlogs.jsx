@@ -3,8 +3,10 @@ import Footer from "./Footer";
 import Navbar from "./Home/Navbar";
 import { Card } from 'antd';
 import { Button, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../Component/AuthProvider";
+
 
 
 const { Meta } = Card;
@@ -13,6 +15,7 @@ const { Meta } = Card;
 
 const AllBlogs = () => {
 
+    const { user } = useContext(AuthContext)
     const allBlogs = useLoaderData()
     console.log(allBlogs)
     const navigate = useNavigate()
@@ -33,16 +36,19 @@ const AllBlogs = () => {
         setCategoryFilter(toLowerCase)
     }
 
-    const handleWishList = (email, id) => {
+    const handleWishList = (allBlog) => {
+        // console.log(allBlog)
+        const userEmail = user.email
+        const { title, short_description, long_description, category, email, image } = allBlog
+        const wishList = { userEmail, title, short_description, long_description, category, email, image }
 
-        const wishList = { email: email, id: id }
-        console.log(wishList)
-        navigate(`/wishlist/${id}`)
-        axios.post('http://localhost:5000/addWishListCollection', wishList)
+
+        console.log(allBlog)
+        axios.post('http://localhost:5000/wishlist', wishList)
             .then(res => console.log(res.data))
-
-
     }
+
+
 
 
     return (
@@ -86,7 +92,7 @@ const AllBlogs = () => {
                         <Text><span className="text-orange-600 font-bold">Category:</span> {allBlog.category}</Text>
                         <div className="grid grid-cols-2 gap-2">
                             <Button onClick={() => handlebutton(allBlog._id)} className="btn btn-outline btn-primary">Details</Button>
-                            <Button onClick={() => handleWishList(allBlog.email, allBlog._id,)} className="btn btn-outline btn-success">Whishlist</Button>
+                            <Button onClick={() => handleWishList(allBlog)} className="btn btn-outline btn-success">Whishlist</Button>
                         </div>
                     </Card>)
                 }
