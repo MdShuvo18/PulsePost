@@ -11,6 +11,8 @@ import RecentBlogDetails from "../Pages/RecentBlogDetails";
 import Wishlist from "../Component/WishList/Wishlist";
 import Comment from "../Component/Comment";
 import UpdateBlog from "../Component/UpdateBlog";
+import Featured from "../Pages/Featured";
+
 
 const router = createBrowserRouter([
     {
@@ -50,9 +52,13 @@ const router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/addBlogCollection')
             },
             {
-                path: '/wishlist/:id',
+                path: '/wishlist',
                 element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
+                // loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
+            },
+            {
+                path:'/featured',
+                element:<Featured></Featured>
             },
 
             {

@@ -37,7 +37,7 @@ const UpdateBlog = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
-                    form.reset();
+                    
                 }
             })
 

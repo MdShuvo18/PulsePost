@@ -1,3 +1,4 @@
+import ExtraOne from "../ExtraOne";
 import Footer from "../Footer";
 import NewsLetter from "../NewsLetter";
 import RecentBlogsSection from "../RecentBlogsSection";
@@ -12,6 +13,7 @@ const Home = () => {
             <Banner></Banner>
             <RecentBlogsSection></RecentBlogsSection>
             <NewsLetter></NewsLetter>
+            <ExtraOne></ExtraOne>
             <Footer></Footer>
         </div>
     );

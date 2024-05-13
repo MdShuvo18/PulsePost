@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../Component/AuthProvider";
-// import { ToastContainer, toast } from "react-toastify";
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from "react-router-dom";
 import { IoEye } from "react-icons/io5";
@@ -58,11 +57,7 @@ const Register = () => {
                         window.location.href = '/';
                     })
                     .catch()
-                // send verification email
-                // sendEmailVerification(result.user)
-                //     .then(() => {
-                //         alert('please check your email')
-                //     })
+
 
             })
             .catch(error => {
