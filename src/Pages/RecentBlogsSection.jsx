@@ -1,10 +1,13 @@
 import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Link, Stack, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Component/AuthProvider";
 
 
 
 const RecentBlogsSection = () => {
+    const{user}=useContext(AuthContext)
 
     const [blogs, setBlogs] = useState([])
     const [visible, setVisible] = useState(6)
@@ -25,6 +28,19 @@ const RecentBlogsSection = () => {
     const handlebutton = (id) => {
         navigate(`/blogdetails/${id}`)
     }
+
+    const handleWishList = (blog) => {
+        // console.log(allBlog)
+        const userEmail = user.email
+        const { title, short_description, long_description, category, email, image } = blog
+        const wishList = { userEmail, title, short_description, long_description, category, email, image }
+
+
+        console.log(blog)
+        axios.post('http://localhost:5000/wishlist', wishList)
+            .then(res => console.log(res.data))
+    }
+
     const handleShowMore = () => {
         setVisible(prev => prev + 6)
     }
@@ -61,7 +77,7 @@ const RecentBlogsSection = () => {
                                     <Button onClick={() => handlebutton(blog._id)} variant='solid' colorScheme='blue'>
                                         Details
                                     </Button>
-                                    <Button variant='ghost' colorScheme='blue'>
+                                    <Button onClick={()=>handleWishList(blog)} variant='ghost' colorScheme='blue'>
                                         Wishlist
                                     </Button>
                                 </ButtonGroup>

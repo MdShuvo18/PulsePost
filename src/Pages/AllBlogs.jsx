@@ -97,7 +97,8 @@ const AllBlogs = () => {
                     </Card>)
                 }
 
-                {
+               
+               {
                     allBlogs.length > visible && (
 
                         <a onClick={handleShowMore} href="#_" className=" relative inline-block text-lg group">
@@ -111,6 +112,7 @@ const AllBlogs = () => {
 
                     )
                 }
+              
 
             </div>
             <Footer></Footer>
