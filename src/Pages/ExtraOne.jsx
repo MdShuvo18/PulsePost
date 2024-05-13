@@ -19,7 +19,7 @@ const ExtraOne = () => {
                             <p className="text-lg">T. Tashia</p>
                         </Typography>
                         <Typography>
-                        Tashia is passionate about all things website development, digital marketing, and eCommerce. She strives to spread her knowledge and help people navigate the online world through her words, one article at a time.
+                            Tashia is passionate about all things website development, digital marketing, and eCommerce. She strives to spread her knowledge and help people navigate the online world through her words, one article at a time.
                         </Typography>
                     </CardBody>
                     <CardFooter className="pt-0">
@@ -54,7 +54,7 @@ const ExtraOne = () => {
                             <p className="text-lg">Jason william</p>
                         </Typography>
                         <Typography>
-                        Jason william is passionate about all things website development, digital marketing, and eCommerce. She strives to spread her knowledge and help people navigate the online world through her words, one article at a time.
+                            Jason william is passionate about all things website development, digital marketing, and eCommerce. She strives to spread her knowledge and help people navigate the online world through her words, one article at a time.
                         </Typography>
                     </CardBody>
                     <CardFooter className="pt-0">
@@ -89,7 +89,7 @@ const ExtraOne = () => {
                             <p className="text-lg">Amber Lia</p>
                         </Typography>
                         <Typography>
-                        Amber Lia is passionate about all things website development, digital marketing, and eCommerce. She strives to spread her knowledge and help people navigate the online world through her words, one article at a time.
+                            Amber Lia is passionate about all things website development, digital marketing, and eCommerce. She strives to spread her knowledge and help people navigate the online world through her words, one article at a time.
                         </Typography>
                     </CardBody>
                     <CardFooter className="pt-0">
@@ -124,7 +124,7 @@ const ExtraOne = () => {
                             <p className="text-lg">Kriss Woaks</p>
                         </Typography>
                         <Typography>
-                        Kriss Woaks is passionate about all things website development, digital marketing, and eCommerce. She strives to spread her knowledge and help people navigate the online world through her words, one article at a time.
+                            Kriss Woaks is passionate about all things website development, digital marketing, and eCommerce. She strives to spread her knowledge and help people navigate the online world through her words, one article at a time.
                         </Typography>
                     </CardBody>
                     <CardFooter className="pt-0">

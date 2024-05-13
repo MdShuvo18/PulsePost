@@ -38,7 +38,16 @@ const Register = () => {
             toast.error("Password must contain at least one LowerCase characters")
             setSuccess(<p className="text-red-700">Password must be at least one lowerCase characters</p>);
             return;
+        } else if (!/[^A-Za-z0-9]/.test(password)) {
+            toast.error("Password must contain at least one special characters")
+            setSuccess(<p className="text-red-700">Password must be at least one special characters</p>);
+            return;
+        } else if (!/\d/.test(password)) {
+            toast.error("Password must contain at least one number")
+            setSuccess(<p className="text-red-700">Password must be at least one number</p>);
+            return;
         }
+
 
         // console.log(name, email, password, photo)
         createUser(email, password)
