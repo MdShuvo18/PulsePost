@@ -105,7 +105,7 @@ const UpdateBlog = () => {
                         </div>
 
                     </div>
-                    {/* form Photo url row */}
+                   
 
                     <input type="submit" value="Update Blog" className="btn btn-block" />
 

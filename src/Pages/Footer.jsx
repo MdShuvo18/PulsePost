@@ -4,6 +4,7 @@ const Footer = () => {
     return (
         <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
             <img  className="w-28 h-28 rounded-full" src="https://i.ibb.co/h7zCVxj/Flat-logo-Blogger-icon-Clipart-PNG.png" alt="" />
+           <div> <a className="btn btn-ghost text-xl"><span className="text-orange-600 text-lg">P</span>ulse<span className="text-orange-600 text-lg">P</span>ost</a></div>
         <nav className="grid grid-flow-col gap-4">
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
