@@ -13,7 +13,8 @@ const Wishlist = () => {
     const [loadData, setLoadData] = useState([])
     const navigate = useNavigate()
     useEffect(() => {
-        axios.get(`https://blog-website-server-eight.vercel.app/wishlist?userEmail=${user.email}`)
+        axios.get(`http://localhost:5000/
+wishlist?userEmail=${user.email}`)
             .then(res => setLoadData(res.data))
     }, [])
 
@@ -35,7 +36,8 @@ const Wishlist = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://blog-website-server-eight.vercel.app/wishlist/${_id}`, {
+                fetch(`http://localhost:5000/
+wishlist/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

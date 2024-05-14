@@ -16,7 +16,7 @@ const RecentBlogsSection = () => {
     // const [expand, setExpand] = useState(false)
 
     useEffect(() => {
-        fetch('https://blog-website-server-eight.vercel.app/addBlogCollection')
+        fetch('http://localhost:5000/addBlogCollection')
             .then(res => res.json())
             .then(data => {
                 setBlogs(data)
@@ -37,7 +37,7 @@ const RecentBlogsSection = () => {
 
 
         console.log(blog)
-        axios.post('https://blog-website-server-eight.vercel.app/wishlist', wishList)
+        axios.post('http://localhost:5000/wishlist', wishList)
             .then(res => console.log(res.data))
     }
 

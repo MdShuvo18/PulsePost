@@ -44,7 +44,7 @@ const AllBlogs = () => {
 
 
         console.log(allBlog)
-        axios.post('https://blog-website-server-eight.vercel.app/wishlist', wishList)
+        axios.post('http://localhost:5000/wishlist', wishList)
             .then(res => console.log(res.data))
     }
 

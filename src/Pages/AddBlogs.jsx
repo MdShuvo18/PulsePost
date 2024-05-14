@@ -21,7 +21,7 @@ const AddBlogs = () => {
         const blogData = { title, email, image, short_description, long_description, category }
         console.log(blogData)
 
-        fetch('https://blog-website-server-eight.vercel.app/addBlogCollection', {
+        fetch('http://localhost:5000/addBlogCollection', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
