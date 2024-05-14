@@ -1,4 +1,5 @@
 import ExtraOne from "../ExtraOne";
+import ExtraTwo from "../ExtraTwo";
 import Footer from "../Footer";
 import NewsLetter from "../NewsLetter";
 import RecentBlogsSection from "../RecentBlogsSection";
@@ -14,6 +15,7 @@ const Home = () => {
             <RecentBlogsSection></RecentBlogsSection>
             <NewsLetter></NewsLetter>
             <ExtraOne></ExtraOne>
+            <ExtraTwo></ExtraTwo>
             <Footer></Footer>
         </div>
     );
