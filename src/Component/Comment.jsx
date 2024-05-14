@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Spin } from "antd";
 
 
 
@@ -21,7 +22,7 @@ const Comment = () => {
     //         .then(res => setComments(res.data))
     // }, [])
 
-    if (isPending) return "Loading..."
+    if (isPending) return <Spin />;
 
 
     return (

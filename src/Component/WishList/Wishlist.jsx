@@ -1,22 +1,31 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import Footer from "../../Pages/Footer";
 import Navbar from "../../Pages/Home/Navbar";
-import axios from "axios";
 import { AuthContext } from "../AuthProvider";
 import { Button, Card, CardBody, CardFooter, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import { Spin } from "antd";
 
 
 const Wishlist = () => {
     const { user } = useContext(AuthContext)
-    const [loadData, setLoadData] = useState([])
+    // const [loadData, setLoadData] = useState([])
     const navigate = useNavigate()
-    useEffect(() => {
-        axios.get(`http://localhost:5000/
-wishlist?userEmail=${user.email}`)
-            .then(res => setLoadData(res.data))
-    }, [])
+    const { isPending, data: loadData } = useQuery({
+        queryKey: 'loadData',
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/wishlist?userEmail=${user.email}`)
+            return res.json()
+        }
+    })
+    if(isPending) return <Spin />;
+    
+    // useEffect(() => {
+    //     axios.get(`http://localhost:5000/wishlist?userEmail=${user.email}`)
+    //         .then(res => setLoadData(res.data))
+    // }, [])
 
     const handlebutton = (id) => {
         navigate(`/wishlistdetails/${id}`)
@@ -36,8 +45,7 @@ wishlist?userEmail=${user.email}`)
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/
-wishlist/${_id}`, {
+                fetch(`http://localhost:5000/wishlist/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

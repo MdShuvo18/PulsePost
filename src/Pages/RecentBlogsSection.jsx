@@ -1,11 +1,11 @@
 import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext,  useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Component/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 
-
+import { Spin } from 'antd';
 
 const RecentBlogsSection = () => {
     const { user } = useContext(AuthContext)
@@ -22,7 +22,7 @@ const RecentBlogsSection = () => {
             return res.json()
         }
     })
-    if(isPending) return 'loading...'
+    if(isPending) return <Spin />;
     // const [expand, setExpand] = useState(false)
 
     // useEffect(() => {
