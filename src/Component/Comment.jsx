@@ -9,7 +9,7 @@ const Comment = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/comment')
+        axios.get('https://blog-website-server-eight.vercel.app/comment')
             .then(res => setComments(res.data))
     }, [])
 

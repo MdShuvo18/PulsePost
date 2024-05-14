@@ -33,7 +33,7 @@ const RecentBlogDetails = () => {
         }
 
 
-        axios.post('http://localhost:5000/comment',
+        axios.post('https://blog-website-server-eight.vercel.app/comment',
             { comment: comment, email: userEmail, blogsId: blogsDetail._id, userName: userName, profilePicture: profilePicture })
             .then(res => console.log(res.data))
     }

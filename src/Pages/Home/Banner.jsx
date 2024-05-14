@@ -6,7 +6,7 @@ const Banner = () => {
         <Carousel className="rounded-xl">
             <div className="relative h-full w-full">
                 <img
-                    src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+                    src="https://i.ibb.co/6gr12Bm/william-farlow-Ieva-ZPwq0mw-unsplash.jpg"
                     alt="image 1"
                     className="h-full w-full object-cover"
                 />
@@ -42,7 +42,7 @@ const Banner = () => {
             </div>
             <div className="relative h-full w-full">
                 <img
-                    src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+                    src="https://i.ibb.co/ZJd5Lzp/neom-STV2s3-FYw7-Y-unsplash.jpg"
                     alt="image 2"
                     className="h-full w-full object-cover"
                 />
@@ -78,7 +78,7 @@ const Banner = () => {
             </div>
             <div className="relative h-full w-full">
                 <img
-                    src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
+                    src="https://i.ibb.co/56DF4KH/andrew-neel-cckf4-Ts-HAuw-unsplash.jpg"
                     alt="image 3"
                     className="h-full w-full object-cover"
                 />
@@ -89,7 +89,7 @@ const Banner = () => {
                             color="white"
                             className="mb-4 text-3xl md:text-4xl lg:text-5xl"
                         >
-                            The Beauty of Nature
+                            The Beauty of Thinking
                         </Typography>
                         <Typography
                             variant="lead"

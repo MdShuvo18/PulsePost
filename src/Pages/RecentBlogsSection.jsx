@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Link, Stack, Text } from "@chakra-ui/react";
+import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,7 @@ const RecentBlogsSection = () => {
     // const [expand, setExpand] = useState(false)
 
     useEffect(() => {
-        fetch('http://localhost:5000/addBlogCollection')
+        fetch('https://blog-website-server-eight.vercel.app/addBlogCollection')
             .then(res => res.json())
             .then(data => {
                 setBlogs(data)
@@ -37,7 +37,7 @@ const RecentBlogsSection = () => {
 
 
         console.log(blog)
-        axios.post('http://localhost:5000/wishlist', wishList)
+        axios.post('https://blog-website-server-eight.vercel.app/wishlist', wishList)
             .then(res => console.log(res.data))
     }
 

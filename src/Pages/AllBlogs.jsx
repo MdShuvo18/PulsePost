@@ -44,7 +44,7 @@ const AllBlogs = () => {
 
 
         console.log(allBlog)
-        axios.post('http://localhost:5000/wishlist', wishList)
+        axios.post('https://blog-website-server-eight.vercel.app/wishlist', wishList)
             .then(res => console.log(res.data))
     }
 
@@ -97,8 +97,8 @@ const AllBlogs = () => {
                     </Card>)
                 }
 
-               
-               {
+
+                {
                     allBlogs.length > visible && (
 
                         <a onClick={handleShowMore} href="#_" className=" relative inline-block text-lg group">
@@ -112,7 +112,7 @@ const AllBlogs = () => {
 
                     )
                 }
-              
+
 
             </div>
             <Footer></Footer>
