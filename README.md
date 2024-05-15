@@ -1,4 +1,4 @@
-# PulsePost README
+# PulsePost
 
 Welcome to **PulsePost**, your go-to blog-based website for discovering insightful and engaging content across a variety of topics. Here are five standout features that make PulsePost unique:
 
