@@ -10,7 +10,7 @@ const Comment = () => {
     const { isPending, data: comments } = useQuery({
         queryKey: ['comments'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/comment')
+            const res = await fetch('https://blog-website-server-eight.vercel.app/comment')
             return res.json()
         }
     })
@@ -18,7 +18,7 @@ const Comment = () => {
 
 
     // useEffect(() => {
-    //     axios.get('http://localhost:5000/comment')
+    //     axios.get('https://blog-website-server-eight.vercel.app/comment')
     //         .then(res => setComments(res.data))
     // }, [])
 

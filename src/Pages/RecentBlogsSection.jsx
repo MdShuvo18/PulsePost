@@ -10,30 +10,20 @@ import { Spin } from 'antd';
 const RecentBlogsSection = () => {
     const { user } = useContext(AuthContext)
 
-    // const [blogs, setBlogs] = useState([])
+    
     const [visible, setVisible] = useState(6)
 
     const navigate = useNavigate()
 
     const {isPending, data: blogs } = useQuery({
-        queryKey: 'blogs',
+        queryKey: ['blogs'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/addBlogCollection')
+            const res = await fetch('https://blog-website-server-eight.vercel.app/addBlogCollection')
             return res.json()
         }
     })
     if(isPending) return <Spin />;
-    // const [expand, setExpand] = useState(false)
-
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/addBlogCollection')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setBlogs(data)
-
-    //         })
-    //     console.log(blogs)
-    // }, [])
+   
 
     const handlebutton = (id) => {
         navigate(`/blogdetails/${id}`)
@@ -47,7 +37,7 @@ const RecentBlogsSection = () => {
 
 
         console.log(blog)
-        axios.post('http://localhost:5000/wishlist', wishList)
+        axios.post('https://blog-website-server-eight.vercel.app/wishlist', wishList)
             .then(res => console.log(res.data))
     }
 
@@ -55,9 +45,6 @@ const RecentBlogsSection = () => {
         setVisible(prev => prev + 6)
     }
 
-    // const handleExpand = () => {
-    //     setExpand(!expand)
-    // }
 
     return (
         <div className="space-y-6">

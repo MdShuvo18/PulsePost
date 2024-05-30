@@ -10,6 +10,9 @@ import { AuthContext } from "../Component/AuthProvider";
 import toast, { Toaster } from 'react-hot-toast';
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
+import Navbar from "./Home/Navbar";
+import Footer from "./Footer";
+
 
 
 const Login = () => {
@@ -80,8 +83,16 @@ const Login = () => {
             .then(() => {
                 // console.log(result.user)
                 toast.success("login success")
-                // setSuccess('Login Successful')
+                setSuccess('Login Successful')
                 navigate(location?.state ? location.state : '/')
+                // const user ={email}
+                // axios.post('https://blog-website-server-eight.vercel.app/jwt',user,{withCredentials:true})
+                // .then(res=>{
+                //     // console.log(res.data)
+                //     if(res.data.success){
+                //         navigate(location?.state ? location.state : '/')
+                //     }
+                // })
             })
             .catch(error => {
                 console.log(error.message);
@@ -92,11 +103,13 @@ const Login = () => {
     }
 
 
-    // eslint-disable-next-line no-undef
+    
 
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+       <div>
+        <Navbar></Navbar>
+         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                 {/* <div className="w-1/2 items-center mr-12">
                     <img className="rounded" src="https://i.ibb.co/JK3TJtt/login-concept-illustration-114360-757.jpg" alt="" />
@@ -150,6 +163,8 @@ const Login = () => {
             </div>
             <Toaster position="top-right" autoClose="2000"></Toaster>
         </div>
+        <Footer></Footer>
+       </div>
     );
 };
 

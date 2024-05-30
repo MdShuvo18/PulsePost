@@ -43,10 +43,11 @@ const Navbar = () => {
                 <li><NavLink to='/addblogs'>Add Blog</NavLink></li>
                 <li><NavLink to='/allblogs'>All blogs</NavLink></li>
                 <li><NavLink to='/wishlist'>Wishlist</NavLink></li>
+                <li><NavLink to='/featured'>Featured Blogs</NavLink></li>
                 {/* <li><NavLink to='/updateblog'>Update Blog</NavLink></li> */}
             </>
         }
-        <li><NavLink to='/featured'>Featured Blogs</NavLink></li>
+        
 
 
     </>
@@ -60,6 +61,7 @@ const Navbar = () => {
     }
     return (
         <div>
+            
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">

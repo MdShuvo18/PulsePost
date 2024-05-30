@@ -32,29 +32,29 @@ const router = createBrowserRouter([
             {
                 path: '/blogdetails/:id',
                 element: <PrivateRoute><RecentBlogDetails></RecentBlogDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/blogdetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://blog-website-server-eight.vercel.app/blogdetails/${params.id}`)
             },
             {
                 path: '/wishlistdetails/:id',
                 element: <PrivateRoute><RecentBlogDetails></RecentBlogDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
+                loader: ({ params }) => fetch(`https://blog-website-server-eight.vercel.app/wishlist/${params.id}`)
             },
             {
                 path: '/updateblog/:id',
                 element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/addBlogCollection/${params.id}`)
+                loader: ({ params }) => fetch(`https://blog-website-server-eight.vercel.app/addBlogCollection/${params.id}`)
 
 
             },
             {
                 path: '/comment',
                 element: <Comment></Comment>,
-                // loader: () => fetch('http://localhost:5000/comment')
+                // loader: () => fetch('https://blog-website-server-eight.vercel.app/comment')
             },
             {
                 path: '/allblogs',
                 element: <PrivateRoute><AllBlogs></AllBlogs></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/addBlogCollection')
+                loader: () => fetch('https://blog-website-server-eight.vercel.app/addBlogCollection')
             },
             {
                 path: '/wishlist',
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
             {
                 path: '/featured',
                 element: <Featured></Featured>,
-                // loader: () => fetch('http://localhost:5000/addBlogCollection')
+                loader: () => fetch('https://blog-website-server-eight.vercel.app/addBlogCollection')
             },
 
             {

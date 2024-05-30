@@ -16,14 +16,14 @@ const Wishlist = () => {
     const { isPending, data: loadData } = useQuery({
         queryKey: 'loadData',
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/wishlist?userEmail=${user.email}`)
+            const res = await fetch(`https://blog-website-server-eight.vercel.app/wishlist?userEmail=${user.email}`)
             return res.json()
         }
     })
     if(isPending) return <Spin />;
     
     // useEffect(() => {
-    //     axios.get(`http://localhost:5000/wishlist?userEmail=${user.email}`)
+    //     axios.get(`https://blog-website-server-eight.vercel.app/wishlist?userEmail=${user.email}`)
     //         .then(res => setLoadData(res.data))
     // }, [])
 
@@ -45,7 +45,11 @@ const Wishlist = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/wishlist/${_id}`, {
+                fetch(`https://blog-website-server-eight.vercel.app
+
+/
+
+wishlist/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -65,7 +69,7 @@ const Wishlist = () => {
 
 
     return (
-        <div>
+        <div className="space-y-6">
             <Navbar></Navbar>
             <h2 className="text-4xl font-extrabold text-center">WishList</h2>
             <div className="grid grid-cols-1 gap-4"> {

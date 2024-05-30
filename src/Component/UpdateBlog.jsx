@@ -20,7 +20,11 @@ const UpdateBlog = () => {
         const updateBlog = { title, short_description, long_description, image, category }
 
            // send data to the server
-           fetch(`http://localhost:5000/addBlogCollection/${_id}`, {
+           fetch(`https://blog-website-server-eight.vercel.app
+
+/
+
+addBlogCollection/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

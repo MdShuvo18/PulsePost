@@ -3,9 +3,10 @@ import Footer from "./Footer";
 import Navbar from "./Home/Navbar";
 import { Card } from 'antd';
 import { Button, Text } from "@chakra-ui/react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../Component/AuthProvider";
+
 
 
 
@@ -17,18 +18,34 @@ const AllBlogs = () => {
 
     const { user } = useContext(AuthContext)
     const allBlogs = useLoaderData()
-    console.log(allBlogs)
+    // console.log(allBlogs)
     const navigate = useNavigate()
     const [category, setCategoryFilter] = useState(null);
     const [searchItem, setSearchItem] = useState('')
     const [visible, setVisible] = useState(6)
-    const handleShowMore = () => {
-        setVisible(prev => prev + 6)
-    }
+    const [search, setSearch] = useState('')
+
+    useEffect(() => {
+        fetch(`https://blog-website-server-eight.vercel.app/addBlogCollection?search=${search}`)
+        .then(res=>res.json())
+        .then(data=>setSearch(data))
+        // axios.get(`https://blog-website-server-eight.vercel.app/addBlogCollection?search=${search}`)
+        //     .then(res => {
+        //         setSearch(res.data)
+              
+        //     })
+    }, [])
 
 
     const handlebutton = (id) => {
         navigate(`/blogdetails/${id}`)
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const searchField = form.search.value;
+        setSearch(searchField)
     }
 
     const handleCustomization = (category) => {
@@ -44,8 +61,12 @@ const AllBlogs = () => {
 
 
         console.log(allBlog)
-        axios.post('http://localhost:5000/wishlist', wishList)
+        axios.post('https://blog-website-server-eight.vercel.app/wishlist', wishList)
             .then(res => console.log(res.data))
+    }
+
+    const handleShowMore = () => {
+        setVisible(prev => prev + 6)
     }
 
 
@@ -56,12 +77,10 @@ const AllBlogs = () => {
             <Navbar></Navbar>
             <h2 className="text-5xl font-bold text-center">All blogs</h2>
 
-            <input
-                placeholder="Search by title"
-                value={searchItem}
-                onChange={(e) => setSearchItem(e.target.value)}
-                style={{ maxWidth: 300, margin: '0 auto', marginBottom: 20 }} />
-            <button className="">search</button>
+            <form onSubmit={handleSearch}>
+                <input type="text" name="search" placeholder="Serach by title" className="h-9" />
+                <input type="submit" value="Search" className="btn ml-2" />
+            </form>
 
             <div className="grid justify-items-center">
                 <div className="dropdown dropdown-hover">

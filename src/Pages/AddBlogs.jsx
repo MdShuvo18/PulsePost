@@ -18,10 +18,13 @@ const AddBlogs = () => {
         const long_description = form.long_description.value
         const category = form.category.value
         const email = form.email.value
-        const blogData = { title, email, image, short_description, long_description, category }
+        const owner_name=form.owner_name.value
+        const owner_photo= form.owner_photo.value
+
+        const blogData = {owner_name, owner_photo, title, email, image, short_description, long_description, category }
         console.log(blogData)
 
-        fetch('http://localhost:5000/addBlogCollection', {
+        fetch('https://blog-website-server-eight.vercel.app/addBlogCollection', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -57,7 +60,7 @@ const AddBlogs = () => {
                                 <span className="label-text">Blog Title</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="title" placeholder="Blog Title" className="input input-bordered w-full" />
+                                <input type="text" name="title" placeholder="Blog Title" className="input input-bordered w-full"  required/>
                             </label>
                         </div>
                         <div className="form-control md:w-1/2">
@@ -65,7 +68,7 @@ const AddBlogs = () => {
                                 <span className="label-text">Image</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="image" placeholder="Image URL" className="input input-bordered w-full" />
+                                <input type="text" name="image" placeholder="Image URL" className="input input-bordered w-full" required />
                             </label>
                         </div>
 
@@ -78,7 +81,7 @@ const AddBlogs = () => {
                                 <span className="label-text">Short Description</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="short_description" placeholder="Short Description" className="input input-bordered w-full" />
+                                <input type="text" name="short_description" placeholder="Short Description" className="input input-bordered w-full" required />
                             </label>
                         </div>
                         <div className="form-control md:w-1/2">
@@ -86,12 +89,13 @@ const AddBlogs = () => {
                                 <span className="label-text">Long Description</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="long_description" placeholder="Long Description" className="input input-bordered w-full" />
+                                <input type="text" name="long_description" placeholder="Long Description" className="input input-bordered w-full" required />
                             </label>
                         </div>
                     </div>
 
                     {/* form category and user emailrow */}
+                   
                     <div className="md:flex mb-8 gap-2">
                         <div className="form-control md:w-1/2">
                             <label className="label">
@@ -116,6 +120,26 @@ const AddBlogs = () => {
                             </label>
                             <label className="input-group">
                                 <input type="text" name="email" defaultValue={user.email} className="input input-bordered w-full" />
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div className="md:flex mb-8 gap-2">
+                        <div className="form-control md:w-1/2">
+                            <label className="label">
+                                <span className="label-text">Blog Owner Name</span>
+                            </label>
+                            <label className="input-group">
+                                <input type="text" name="owner_name" placeholder="owner name" className="input input-bordered w-full" required />
+                            </label>
+                        </div>
+                        <div className="form-control md:w-1/2">
+                            <label className="label">
+                                <span className="label-text">Blog Owner Photo</span>
+                            </label>
+                            <label className="input-group">
+                                <input type="text" name="owner_photo" defaultValue={user.photoURL} className="input input-bordered w-full" />
                             </label>
                         </div>
 

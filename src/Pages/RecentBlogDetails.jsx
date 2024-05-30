@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData} from "react-router-dom";
 import Navbar from "./Home/Navbar";
 import Footer from "./Footer";
 import { useContext } from "react";
@@ -8,6 +8,8 @@ import Swal from "sweetalert2";
 import Comment from "../Component/Comment";
 
 
+
+
 const RecentBlogDetails = () => {
     const { user } = useContext(AuthContext)
 
@@ -15,7 +17,8 @@ const RecentBlogDetails = () => {
     const userName = user?.displayName;
     const profilePicture = user?.photoURL
     const blogsDetail = useLoaderData()
-    console.log(blogsDetail)
+    // console.log(blogsDetail)
+ 
 
 
 
@@ -33,7 +36,7 @@ const RecentBlogDetails = () => {
         }
 
 
-        axios.post('http://localhost:5000/comment',
+        axios.post('https://blog-website-server-eight.vercel.app/comment',
             { comment: comment, email: userEmail, blogsId: blogsDetail._id, userName: userName, profilePicture: profilePicture })
             .then(res => console.log(res.data))
     }
@@ -43,7 +46,7 @@ const RecentBlogDetails = () => {
             <h1 className="text-4xl font-bold text-center">Blog Details</h1>
             <div>
                 <div className="card h-2/4 bg-base-100 shadow-xl mb-6">
-                    <figure><img src={blogsDetail.image} alt="Movie" /></figure>
+                    <figure><img src={blogsDetail.image} alt="" /></figure>
                     <div className="card-body">
                         <h2 className="card-title text-2xl font-bold">{blogsDetail.title}</h2>
                         <p><span className="text-lg font-semibold text-amber-800">Short Description</span> : {blogsDetail.short_description}</p>

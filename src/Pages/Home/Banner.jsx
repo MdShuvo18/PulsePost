@@ -1,5 +1,5 @@
 import { Carousel, Typography, Button } from "@material-tailwind/react";
-
+import {  Typewriter} from 'react-simple-typewriter'
 
 const Banner = () => {
     return (
@@ -17,7 +17,22 @@ const Banner = () => {
                             color="white"
                             className="mb-4 text-3xl md:text-4xl lg:text-5xl"
                         >
-                            The Beauty of Nature
+                            The Beauty of
+                            <span style={{ color: 'red', fontWeight: 'bold' }}>
+                                {/* Style will be inherited from the parent element */}
+                                <Typewriter
+                                    words={['Nature']}
+                                    loop={0 | false}
+                                    cursor
+                                    cursorStyle='_'
+                                    typeSpeed={70}
+                                    deleteSpeed={50}
+                                    delaySpeed={1000}
+                                    
+                                />
+                            </span>
+                            
+                             
                         </Typography>
                         <Typography
                             variant="lead"
@@ -53,7 +68,19 @@ const Banner = () => {
                             color="white"
                             className="mb-4 text-3xl md:text-4xl lg:text-5xl"
                         >
-                            The Beauty of Nature
+                            The Beauty of  <span style={{ color: 'red', fontWeight: 'bold' }}>
+                                {/* Style will be inherited from the parent element */}
+                                <Typewriter
+                                    words={['Nature']}
+                                    loop={0 | false}
+                                    cursor
+                                    cursorStyle='_'
+                                    typeSpeed={70}
+                                    deleteSpeed={50}
+                                    delaySpeed={1000}
+                                    
+                                />
+                            </span>
                         </Typography>
                         <Typography
                             variant="lead"
@@ -89,7 +116,19 @@ const Banner = () => {
                             color="white"
                             className="mb-4 text-3xl md:text-4xl lg:text-5xl"
                         >
-                            The Beauty of Thinking
+                            The Beauty of  <span style={{ color: 'red', fontWeight: 'bold' }}>
+                                {/* Style will be inherited from the parent element */}
+                                <Typewriter
+                                    words={['Thinking']}
+                                    loop={0 | false}
+                                    cursor
+                                    cursorStyle='_'
+                                    typeSpeed={70}
+                                    deleteSpeed={50}
+                                    delaySpeed={1000}
+                                    
+                                />
+                            </span>
                         </Typography>
                         <Typography
                             variant="lead"
