@@ -30,7 +30,7 @@ npm start
 # PulsePost
 
 Welcome to **PulsePost**, your go-to blog-based website for discovering insightful and engaging content across a variety of topics. Here are five standout features that make PulsePost unique:
-
+## LiveSite: at [PulsePost](https://pulsepost-e00be.web.app/).
 1. **Diverse Range of Categories**:
    - Explore a wide array of blog categories including Travel, Food & Cooking, Business & Entrepreneurship, Health & Wellness, Home & Garden, and Photography. PulsePost provides content that caters to varied interests and passions.
 
@@ -45,7 +45,5 @@ Welcome to **PulsePost**, your go-to blog-based website for discovering insightf
 
 5. **Interactive and Engaging Content**:
    - Engage with our interactive content through comments, likes, and shares. PulsePost fosters a community where readers can connect with authors and fellow enthusiasts, sparking meaningful conversations around shared interests.
-
-Explore more at [PulsePost]().
 
 Thank you for choosing PulsePost. Enjoy your reading journey!
