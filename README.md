@@ -26,6 +26,12 @@ npm install
 ## Running the Project
 npm start
 
+## Technology used in this projects
+- **JavaScript** 
+- **React**
+- **Tailwind**
+- **Node.js**
+- **Mongodb**
 
 # PulsePost
 
